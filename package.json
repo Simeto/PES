@@ -1,0 +1,70 @@
+{
+  "name": "pes",
+  "version": "1.0.0",
+  "description": "Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./app/index.js",
+    "logs": "pm2 logs cba-cms-api --raw | pino",
+    "fix": "pretty-quick",
+    "lint": "eslint .",
+    "precommit": "pretty-quick --staged",
+    "deploy": "pm2 deploy package.json stage",
+    "deploy-setup": "pm2 deploy package.json stage setup",
+    "test": "test"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "http",
+    "mongoose"
+  ],
+  "author": "S.Stanimirov",
+  "license": "ISC",
+  "apps": [
+    {
+      "name": "pes",
+      "script": "app/index.js",
+      "merge_logs": true,
+      "ignore_watch": [
+        "README.md",
+        ".git",
+        ".idea",
+        ".nyc_output",
+        "coverage",
+        "content",
+        "app/*.pid"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "env_stage": {
+        "NODE_ENV": "production"
+      },
+      "env_dev": {
+        "NODE_ENV": "development"
+      }
+    }
+  ],
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "config-extend": "^0.1.1",
+    "cors": "^2.8.5",
+    "glob": "^7.1.6",
+    "json5": "^2.1.3",
+    "mongoose": "^5.9.14",
+    "morgan": "^1.10.0",
+    "pino": "^6.2.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}

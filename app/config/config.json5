@@ -1,0 +1,11 @@
+{
+  port: 6060,
+  baseUrl: 'http://localhost:5050',
+  mongoose: "mongodb://localhost:27017/pes",
+  apiBasePath: "/",
+  cors: false,
+  loglevel: "info",
+  logEnabled: true,
+  logPretty: false,
+  cliMode: false
+}
